@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Fueler</string>
+    <string name="action_add_record">Add Record</string>
+    <string name="car_name_hint">Car\'s Name</string>
+    <string name="car_name_image_description">Car\'s name</string>
+    <string name="car_change_image">Change</string>
+    <string name="action_add_car" />
+    <string name="car_image_description">Car Image</string>
+    <string name="car_name">%s</string>
+    <string name="selected_count">%d</string>
+    <string name="action_delete">Delete</string>
+</resources>
