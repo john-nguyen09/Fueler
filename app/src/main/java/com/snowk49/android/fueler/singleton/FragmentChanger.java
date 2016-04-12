@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 
 import com.snowk49.android.fueler.MainActivity;
 import com.snowk49.android.fueler.view.CarListViewFragment;
@@ -33,12 +34,14 @@ public final class FragmentChanger {
 
     final int id;
     final FragmentManager fragmentManager;
-    CarListViewFragment mainFragment;
+    final ActionBar actionBar;
+    final CarListViewFragment mainFragment;
 
     public FragmentChanger(Context context, int id) {
         this.fragmentManager = ((MainActivity) context).getSupportFragmentManager();
         this.id = id;
 
+        actionBar = ((MainActivity) context).getSupportActionBar();
         mainFragment = new CarListViewFragment();
     }
 

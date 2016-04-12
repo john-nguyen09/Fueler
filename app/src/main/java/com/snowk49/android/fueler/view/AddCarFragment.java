@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,6 +43,7 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onAttach(Context context) {
         this.context = (MainActivity) context;
+        this.context.setTitle(R.string.add_car);
 
         super.onAttach(context);
     }
@@ -73,12 +73,12 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
-        inflater.inflate(R.menu.add_car_menu, menu);
+        inflater.inflate(R.menu.action_done_menu, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_add_car_done) {
+        if (item.getItemId() == R.id.action_done) {
             String carName = carNameEditText.getText().toString();
             Uri localImage = moveImageToInteral(carImageView);
 

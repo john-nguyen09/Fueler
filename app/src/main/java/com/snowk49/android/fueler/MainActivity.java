@@ -1,6 +1,5 @@
 package com.snowk49.android.fueler;
 
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,20 +14,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Singleton initialize
-        DatabaseFactory.init(this);
-        FragmentChanger.init(this, R.id.main_frame);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
-        ActionBar actionBar = getSupportActionBar();
-
-        if (actionBar != null) {
-            actionBar.setHomeButtonEnabled(true);
-        }
 
         return true;
     }
@@ -50,5 +40,13 @@ public class MainActivity extends AppCompatActivity {
         FragmentChanger.close();
 
         super.onDestroy();
+    }
+
+    @Override
+    protected void onStart() {
+        DatabaseFactory.init(this);
+        FragmentChanger.init(this, R.id.main_frame);
+
+        super.onStart();
     }
 }

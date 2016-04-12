@@ -4,9 +4,33 @@
     <string name="car_name_hint">Car\'s Name</string>
     <string name="car_name_image_description">Car\'s name</string>
     <string name="car_change_image">Change</string>
-    <string name="action_add_car" />
+    <string name="action_done">Done</string>
     <string name="car_image_description">Car Image</string>
     <string name="car_name">%s</string>
     <string name="selected_count">%d</string>
     <string name="action_delete">Delete</string>
+    <string name="change_date_button">Today</string>
+    <string name="total_cost_hint">Total cost</string>
+    <string name="change_date_description">Change date</string>
+    <string name="total_cost_description">Total cost</string>
+    <string name="odometer_hint">Odometer value</string>
+    <string name="odometer_description">Odometer value</string>
+    <string name="partial_fillup_hint">Partial fill-up</string>
+    <string name="fuel_description">Description</string>
+    <string name="fuel_description_hint">Description</string>
+    <string name="add_fuel_record_button_description">Add fuel</string>
+    <string name="add_car">Add New Car</string>
+    <string name="add_fuel_record">Add Fuel Record</string>
+    <string name="fuel_record_list_view">Fuel Record History</string>
+    <string name="date_display_format">dd MMM yyyy</string>
+    <string name="fuel_record_total_cost">Total cost</string>
+    <string name="fuel_record_odometer">Odometer value</string>
+    <string name="fuel_record_partial_fillup">Partial fillup</string>
+    <string name="fuel_record_description">Description</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="fuel_record_total_cost_value" formatted="false">%s%.2f</string>
+    <string name="fuel_record_odometer_value" formatted="false">%.2f %s</string>
+    <string name="fuel_record_partial_fillup_value">%s</string>
+    <string name="fuel_record_description_value">%s</string>
 </resources>

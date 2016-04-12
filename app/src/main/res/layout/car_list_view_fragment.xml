@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/card_list_view_background_color"
+    android:focusable="true"
     android:paddingLeft="@dimen/list_view_padding_horizontal"
     android:paddingStart="@dimen/list_view_padding_horizontal"
     android:paddingEnd="@dimen/list_view_padding_horizontal"

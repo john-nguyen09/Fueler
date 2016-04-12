@@ -46,11 +46,17 @@ public class CarListViewFragment extends Fragment implements AdapterView.OnItemC
         super.onAttach(context);
     }
 
+    @Override
+    public void onResume() {
+        context.setTitle(R.string.app_name);
+        super.onResume();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.car_list_view, container, false);
+        View view = inflater.inflate(R.layout.car_list_view_fragment, container, false);
 
         carListView = (ListView) view.findViewById(R.id.car_list_view);
         carListViewAdapter = new CarListViewAdapter(context);
@@ -67,7 +73,10 @@ public class CarListViewFragment extends Fragment implements AdapterView.OnItemC
         if (actionMode != null) {
             selectItem(position);
         } else {
+            FuelDetailsFragment fuelDetailsFragment = new FuelDetailsFragment();
+            fuelDetailsFragment.setCar(carListViewAdapter.getItem(position));
 
+            FragmentChanger.getInstance().changeFragment(fuelDetailsFragment);
         }
     }
 

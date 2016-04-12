@@ -1,11 +1,11 @@
 package com.snowk49.android.fueler.presenter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,18 +14,19 @@ import com.snowk49.android.fueler.model.Car;
 import com.snowk49.android.fueler.model.CarTable;
 import com.snowk49.android.fueler.model.FuelerDbHelper;
 import com.snowk49.android.fueler.singleton.DatabaseFactory;
+import com.snowk49.android.fueler.singleton.FragmentChanger;
+import com.snowk49.android.fueler.view.AddFuelRecordFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class CarListViewAdapter extends ArrayAdapter<Car> {
+public class CarListViewAdapter extends ArrayAdapter<Car> implements View.OnClickListener {
 
     public static final int MAXIMUM_NUMBER_CARS = 100;
 
     ArrayList<Car> cars;
     ArrayList<Integer> selectedCars;
-    Drawable defaultBackground;
 
     public CarListViewAdapter(Context context) {
         super(context, 0);
@@ -76,18 +77,20 @@ public class CarListViewAdapter extends ArrayAdapter<Car> {
             LayoutInflater layoutInflater = (LayoutInflater)
                     getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            convertView = layoutInflater.inflate(R.layout.car_summary_view, parent, false);
+            convertView = layoutInflater.inflate(R.layout.car_list_view_item, parent, false);
             ViewTag viewTag = new ViewTag();
 
             viewTag.carImageView = (ImageView) convertView.findViewById(R.id.car_image_view);
             viewTag.carNameTextView = (TextView) convertView.findViewById(R.id.car_name_text_view);
+            viewTag.addFuelButton = (Button) convertView.findViewById(R.id.add_fuel_record_button);
+            viewTag.addFuelButton.setOnClickListener(this);
             convertView.setTag(viewTag);
-
-            defaultBackground = convertView.getBackground();
         }
 
         ViewTag viewTag = (ViewTag) convertView.getTag();
         viewTag.carNameTextView.setText(car.getCarName());
+        viewTag.addFuelButton.setTag(position);
+
         if (selectedCars.contains(position)) {
             Picasso.with(getContext())
                     .load(R.drawable.ic_done_black)
@@ -99,6 +102,16 @@ public class CarListViewAdapter extends ArrayAdapter<Car> {
         }
 
         return convertView;
+    }
+
+    @Override
+    public void onClick(View v) {
+        Integer position = (Integer) v.getTag();
+        Car car = cars.get(position);
+        AddFuelRecordFragment addFuelRecordFragment = new AddFuelRecordFragment();
+        addFuelRecordFragment.setCar(car);
+
+        FragmentChanger.getInstance().changeFragment(addFuelRecordFragment);
     }
 
     public void removeAll(Car[] cars) {
@@ -154,5 +167,6 @@ public class CarListViewAdapter extends ArrayAdapter<Car> {
 
         public ImageView carImageView;
         public TextView carNameTextView;
+        public Button addFuelButton;
     }
 }

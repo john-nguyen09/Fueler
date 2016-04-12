@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fuel_record_list_view"
+    android:scrollbars="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_list_view_background_color"
+    android:focusable="true"
+    android:paddingLeft="@dimen/list_view_padding_horizontal"
+    android:paddingStart="@dimen/list_view_padding_horizontal"
+    android:paddingEnd="@dimen/list_view_padding_horizontal"
+    android:paddingRight="@dimen/list_view_padding_horizontal"
+    android:paddingTop="@dimen/list_view_padding_vertical"
+    android:paddingBottom="@dimen/list_view_padding_vertical"
+    android:divider="@color/listviewDividerColor">
+
+</ListView>

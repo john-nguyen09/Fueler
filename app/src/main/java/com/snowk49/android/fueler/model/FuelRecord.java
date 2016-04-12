@@ -10,28 +10,42 @@ import java.util.Locale;
 
 public final class FuelRecord {
 
+    private static SimpleDateFormat sqlDateFormat;
+
+    public static SimpleDateFormat getDateFormat() {
+        if (sqlDateFormat == null) {
+            sqlDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        }
+
+        return sqlDateFormat;
+    }
+
     Car car;
     int id;
-    SimpleDateFormat sqlDateFormat;
     Date date;
     float totalCost;
     float odometer;
     boolean partialFillup;
     String description;
 
-    public FuelRecord(Date date, float totalCost, float odometer,
-                      boolean partialFillup, String description) {
-        this();
+    public FuelRecord() {
 
-        this.date = date;
-        this.totalCost = totalCost;
-        this.odometer = odometer;
-        this.partialFillup = partialFillup;
-        this.description = description;
     }
 
-    public FuelRecord() {
-        sqlDateFormat = new SimpleDateFormat("YYYY-MM-DD", Locale.getDefault());
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getDate() {
@@ -89,7 +103,7 @@ public final class FuelRecord {
 
             try {
                 id = cursor.getInt(idIndex);
-                date = sqlDateFormat.parse(cursor.getString(dateIndex));
+                date = getDateFormat().parse(cursor.getString(dateIndex));
                 totalCost = cursor.getFloat(totalCostIndex);
                 odometer = cursor.getFloat(odometerIndex);
                 partialFillup = cursor.getInt(partialFillupIndex) == 1;

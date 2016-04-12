@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <GridLayout
+        android:orientation="horizontal"
+        android:columnCount="4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/list_view_item_padding_horizontal"
+        android:paddingStart="@dimen/list_view_item_padding_horizontal"
+        android:paddingRight="@dimen/list_view_item_padding_horizontal"
+        android:paddingEnd="@dimen/list_view_item_padding_horizontal"
+        android:paddingTop="@dimen/list_view_item_padding_vertical"
+        android:paddingBottom="@dimen/list_view_item_padding_vertical">
+
+        <TextView
+            android:id="@+id/fuel_record_date"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:layout_columnSpan="4"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold"
+            android:text="@string/date_display_format" />
+
+        <TextView
+            android:layout_columnSpan="3"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_gravity="fill_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/fuel_record_total_cost" />
+
+        <TextView
+            android:id="@+id/fuel_record_total_cost"
+            android:layout_columnSpan="1"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/fuel_record_total_cost_value" />
+
+        <TextView
+            android:layout_columnSpan="3"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/fuel_record_odometer" />
+
+        <TextView
+            android:id="@+id/fuel_record_odometer"
+            android:layout_columnSpan="1"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/fuel_record_odometer_value" />
+
+        <TextView
+            android:layout_columnSpan="3"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/fuel_record_partial_fillup" />
+
+        <TextView
+            android:id="@+id/fuel_record_partial_fillup"
+            android:layout_columnSpan="1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/fuel_record_partial_fillup_value" />
+
+        <TextView
+            android:layout_columnSpan="3"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/fuel_record_description" />
+
+        <TextView
+            android:id="@+id/fuel_record_description"
+            android:layout_columnSpan="1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/fuel_record_description_value" />
+    </GridLayout>
+</android.support.v7.widget.CardView>

@@ -11,4 +11,5 @@
     <dimen name="list_view_item_padding_vertical">12dp</dimen>
     <dimen name="card_item_bottom_size">2dp</dimen>
     <dimen name="card_item_corner_radius">1dp</dimen>
+    <dimen name="action_button_size">36dp</dimen>
 </resources>

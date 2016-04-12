@@ -3,6 +3,8 @@ package com.snowk49.android.fueler.model;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+import android.widget.Toast;
 
 import static com.snowk49.android.fueler.model.FuelRecord.FuelEntry;
 
@@ -15,6 +17,7 @@ public class FuelRecordTable extends FuelerTable {
     public void insert(FuelRecord fuelRecord) {
         ContentValues values = new ContentValues();
 
+        values.put(FuelEntry.COLUMN_NAME_CAR_ID, fuelRecord.getCar().getId());
         values.put(FuelEntry.COLUMN_NAME_DATE, fuelRecord.getDateSql());
         values.put(FuelEntry.COLUMN_NAME_TOTAL_COST, fuelRecord.getTotalCost());
         values.put(FuelEntry.COLUMN_NAME_ODOMETER, fuelRecord.getOdometer());
@@ -32,7 +35,7 @@ public class FuelRecordTable extends FuelerTable {
         String[] selectionArgs = new String[] {
                String.valueOf(car.getId())
         };
-        String orderBy = FuelEntry.COLUMN_NAME_DATE + "DESC";
+        String orderBy = FuelEntry.COLUMN_NAME_DATE + " DESC";
 
         Cursor cursor = db.query(FuelEntry.TABLE_NAME,
                 projection,
@@ -46,9 +49,12 @@ public class FuelRecordTable extends FuelerTable {
             FuelRecord[] fuelRecords = new FuelRecord[cursor.getCount()];
             int i = 0;
 
+            Log.d(getClass().getSimpleName(), String.format("fuelRecords.length = %d", fuelRecords.length));
+
             do {
                 fuelRecords[i] = new FuelRecord();
                 fuelRecords[i].retrieveData(cursor);
+                fuelRecords[i].setCar(car);
 
                 i++;
             } while (cursor.moveToNext());
