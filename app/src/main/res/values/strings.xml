@@ -33,4 +33,7 @@
     <string name="fuel_record_odometer_value" formatted="false">%.2f %s</string>
     <string name="fuel_record_partial_fillup_value">%s</string>
     <string name="fuel_record_description_value">%s</string>
+    <string name="litre_hint">Litre</string>
+    <string name="car_average_cost_per_month" formatted="false">%s%.2f/month</string>
+    <string name="car_average_litre_per_km" formatted="false">%.2f%s/%s</string>
 </resources>

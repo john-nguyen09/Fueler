@@ -27,6 +27,7 @@ public class FuelerDbHelper extends SQLiteOpenHelper {
             FuelEntry.COLUMN_NAME_CAR_ID + NUMBER + SEPARATOR +
             FuelEntry.COLUMN_NAME_DATE + DATE + SEPARATOR +
             FuelEntry.COLUMN_NAME_TOTAL_COST + DECIMAL + SEPARATOR +
+            FuelEntry.COLUMN_NAME_LITRE + DECIMAL + SEPARATOR +
             FuelEntry.COLUMN_NAME_ODOMETER + DECIMAL + SEPARATOR +
             FuelEntry.COLUMN_NAME_PARTIAL_FILLUP + BOOLEAN + SEPARATOR +
             FuelEntry.COLUMN_NAME_DESCRIPTION + TEXT + SEPARATOR +

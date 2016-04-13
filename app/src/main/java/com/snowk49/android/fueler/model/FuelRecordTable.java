@@ -3,8 +3,6 @@ package com.snowk49.android.fueler.model;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-import android.widget.Toast;
 
 import static com.snowk49.android.fueler.model.FuelRecord.FuelEntry;
 
@@ -20,6 +18,7 @@ public class FuelRecordTable extends FuelerTable {
         values.put(FuelEntry.COLUMN_NAME_CAR_ID, fuelRecord.getCar().getId());
         values.put(FuelEntry.COLUMN_NAME_DATE, fuelRecord.getDateSql());
         values.put(FuelEntry.COLUMN_NAME_TOTAL_COST, fuelRecord.getTotalCost());
+        values.put(FuelEntry.COLUMN_NAME_LITRE, fuelRecord.getLitre());
         values.put(FuelEntry.COLUMN_NAME_ODOMETER, fuelRecord.getOdometer());
         values.put(FuelEntry.COLUMN_NAME_PARTIAL_FILLUP, fuelRecord.isPartialFillup());
         values.put(FuelEntry.COLUMN_NAME_DESCRIPTION, fuelRecord.getDescription());
@@ -48,8 +47,6 @@ public class FuelRecordTable extends FuelerTable {
         if (cursor != null && cursor.moveToFirst()) {
             FuelRecord[] fuelRecords = new FuelRecord[cursor.getCount()];
             int i = 0;
-
-            Log.d(getClass().getSimpleName(), String.format("fuelRecords.length = %d", fuelRecords.length));
 
             do {
                 fuelRecords[i] = new FuelRecord();

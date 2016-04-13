@@ -36,6 +36,7 @@ public class AddFuelRecordFragment extends Fragment implements View.OnClickListe
     Car car;
     Button dateButton;
     EditText totalCostEditText;
+    EditText litreEditText;
     EditText odometerValueEditText;
     EditText descriptionEditText;
     CheckBox partialFillupCheckBox;
@@ -66,6 +67,7 @@ public class AddFuelRecordFragment extends Fragment implements View.OnClickListe
 
         dateButton = (Button) view.findViewById(R.id.change_date_button);
         totalCostEditText = (EditText) view.findViewById(R.id.total_cost_edit_text);
+        litreEditText = (EditText) view.findViewById(R.id.litre_edit_text);
         odometerValueEditText = (EditText) view.findViewById(R.id.odometer_edit_text);
         descriptionEditText = (EditText) view.findViewById(R.id.description_edit_text);
         partialFillupCheckBox = (CheckBox) view.findViewById(R.id.partial_fillup_check_box);
@@ -87,6 +89,7 @@ public class AddFuelRecordFragment extends Fragment implements View.OnClickListe
         if (item.getItemId() == R.id.action_done) {
             Date date = Calendar.getInstance().getTime();
             float totalCost;
+            float litre;
             float odometer;
 
             try {
@@ -96,6 +99,7 @@ public class AddFuelRecordFragment extends Fragment implements View.OnClickListe
 
             try {
                 totalCost = Float.parseFloat(totalCostEditText.getText().toString());
+                litre = Float.parseFloat(litreEditText.getText().toString());
                 odometer = Float.parseFloat(odometerValueEditText.getText().toString());
             } catch (NumberFormatException e) {
                 return true;
@@ -106,6 +110,7 @@ public class AddFuelRecordFragment extends Fragment implements View.OnClickListe
             FuelRecord fuelRecord = new FuelRecord();
             fuelRecord.setDate(date);
             fuelRecord.setTotalCost(totalCost);
+            fuelRecord.setLitre(litre);
             fuelRecord.setOdometer(odometer);
             fuelRecord.setPartialFillup(partialFillup);
             fuelRecord.setDescription(description);

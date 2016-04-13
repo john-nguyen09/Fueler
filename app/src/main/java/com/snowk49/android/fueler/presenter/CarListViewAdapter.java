@@ -82,13 +82,25 @@ public class CarListViewAdapter extends ArrayAdapter<Car> implements View.OnClic
 
             viewTag.carImageView = (ImageView) convertView.findViewById(R.id.car_image_view);
             viewTag.carNameTextView = (TextView) convertView.findViewById(R.id.car_name_text_view);
+            viewTag.carAverageCostPerMonth = (TextView) convertView
+                    .findViewById(R.id.car_average_cost_per_month);
+            viewTag.carAverageLitrePerKm = (TextView) convertView
+                    .findViewById(R.id.car_average_litre_per_km);
             viewTag.addFuelButton = (Button) convertView.findViewById(R.id.add_fuel_record_button);
             viewTag.addFuelButton.setOnClickListener(this);
             convertView.setTag(viewTag);
         }
 
+        Context context = getContext();
+
         ViewTag viewTag = (ViewTag) convertView.getTag();
         viewTag.carNameTextView.setText(car.getCarName());
+        viewTag.carAverageCostPerMonth.setText(context
+                .getString(R.string.car_average_cost_per_month, "$",
+                        car.getTotalCostAverageEachMonth()));
+        viewTag.carAverageLitrePerKm.setText(context
+                .getString(R.string.car_average_litre_per_km, car.getLitrePerKm(),
+                        "L", "Km"));
         viewTag.addFuelButton.setTag(position);
 
         if (selectedCars.contains(position)) {
@@ -167,6 +179,8 @@ public class CarListViewAdapter extends ArrayAdapter<Car> implements View.OnClic
 
         public ImageView carImageView;
         public TextView carNameTextView;
+        public TextView carAverageCostPerMonth;
+        public TextView carAverageLitrePerKm;
         public Button addFuelButton;
     }
 }

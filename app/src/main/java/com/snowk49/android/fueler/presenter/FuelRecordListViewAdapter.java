@@ -10,49 +10,35 @@ import android.widget.TextView;
 import com.snowk49.android.fueler.R;
 import com.snowk49.android.fueler.model.Car;
 import com.snowk49.android.fueler.model.FuelRecord;
-import com.snowk49.android.fueler.model.FuelRecordTable;
-import com.snowk49.android.fueler.model.FuelerDbHelper;
-import com.snowk49.android.fueler.singleton.DatabaseFactory;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FuelRecordListViewAdapter extends ArrayAdapter<FuelRecord> {
 
     Car car;
-    ArrayList<FuelRecord> fuelRecords;
 
     public FuelRecordListViewAdapter(Context context) {
         super(context, 0);
-
-        fuelRecords = new ArrayList<>();
-    }
-
-    @Override
-    public void addAll(FuelRecord... items) {
-        fuelRecords.addAll(Arrays.asList(items));
-        notifyDataSetChanged();
     }
 
     @Override
     public FuelRecord getItem(int position) {
-        return fuelRecords.get(position);
+        return car.getFuelRecords()[position];
     }
 
     @Override
     public int getCount() {
-        return fuelRecords.size();
+        return car.getFuelRecords().length;
     }
 
     @Override
     public long getItemId(int position) {
-        return fuelRecords.get(position).getId();
+        return car.getFuelRecords()[position].getId();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        FuelRecord fuelRecord = fuelRecords.get(position);
+        FuelRecord fuelRecord = car.getFuelRecords()[position];
 
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater)
@@ -91,15 +77,7 @@ public class FuelRecordListViewAdapter extends ArrayAdapter<FuelRecord> {
 
     public void setCar(Car car) {
         this.car = car;
-        populateFuelRecords();
-    }
-
-    void populateFuelRecords() {
-        FuelerDbHelper dbHelper = DatabaseFactory.getInstance();
-        FuelRecordTable fuelRecordTable = dbHelper.getFuelRecordTable();
-
-        fuelRecordTable.get(car);
-        addAll(car.getFuelRecords());
+        notifyDataSetChanged();
     }
 
     private static class ViewTag {

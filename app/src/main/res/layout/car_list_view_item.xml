@@ -32,6 +32,30 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/car_name"/>
 
+        <TextView
+            android:id="@+id/car_average_cost_per_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/car_image_view"
+            android:layout_toRightOf="@id/car_image_view"
+            android:layout_below="@id/car_name_text_view"
+            android:layout_marginLeft="@dimen/subitem_margin"
+            android:layout_marginStart="@dimen/subitem_margin"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/car_average_cost_per_month"/>
+
+        <TextView
+            android:id="@+id/car_average_litre_per_km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/car_image_view"
+            android:layout_toRightOf="@id/car_image_view"
+            android:layout_below="@id/car_average_cost_per_month"
+            android:layout_marginLeft="@dimen/subitem_margin"
+            android:layout_marginStart="@dimen/subitem_margin"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/car_average_litre_per_km"/>
+
         <Button
             android:id="@+id/add_fuel_record_button"
             android:layout_width="@dimen/action_button_size"

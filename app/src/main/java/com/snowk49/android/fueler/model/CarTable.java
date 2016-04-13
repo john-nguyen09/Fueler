@@ -36,11 +36,14 @@ public class CarTable extends FuelerTable{
 
         if (cursor != null && cursor.moveToFirst()) {
             int i = 0;
+            FuelRecordTable fuelRecordTable = new FuelRecordTable(db);
             cars = new Car[cursor.getCount()];
 
             do {
                 cars[i] = new Car();
                 cars[i].retrieveData(cursor);
+                fuelRecordTable.get(cars[i]);
+
                 i++;
             } while (cursor.moveToNext());
 

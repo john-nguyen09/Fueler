@@ -24,6 +24,7 @@ public final class FuelRecord {
     int id;
     Date date;
     float totalCost;
+    float litre;
     float odometer;
     boolean partialFillup;
     String description;
@@ -66,6 +67,14 @@ public final class FuelRecord {
 
     public void setTotalCost(float totalCost) {
         this.totalCost = totalCost;
+    }
+
+    public float getLitre() {
+        return litre;
+    }
+
+    public void setLitre(float litre) {
+        this.litre = litre;
     }
 
     public float getOdometer() {
@@ -120,6 +129,7 @@ public final class FuelRecord {
         public static final String COLUMN_NAME_CAR_ID = "carId";
         public static final String COLUMN_NAME_DATE = "date";
         public static final String COLUMN_NAME_TOTAL_COST = "totalCost";
+        public static final String COLUMN_NAME_LITRE = "litre";
         public static final String COLUMN_NAME_ODOMETER = "odometer";
         public static final String COLUMN_NAME_PARTIAL_FILLUP = "partialFillup";
         public static final String COLUMN_NAME_DESCRIPTION = "description";

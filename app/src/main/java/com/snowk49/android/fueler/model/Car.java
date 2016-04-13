@@ -4,12 +4,14 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
+import java.util.Collection;
+
 public final class Car {
 
     int id;
     String carName;
     Uri imagePath;
-    FuelRecord[] fuelRecords;
+    MonthlyFuelRecord monthlyFuelRecord;
 
     public Car(String carName, Uri imagePath) {
         this.carName = carName;
@@ -49,11 +51,40 @@ public final class Car {
     }
 
     public FuelRecord[] getFuelRecords() {
-        return fuelRecords;
+        return monthlyFuelRecord.getFuelRecords();
     }
 
     public void setFuelRecords(FuelRecord[] fuelRecords) {
-        this.fuelRecords = fuelRecords;
+        monthlyFuelRecord = new MonthlyFuelRecord(fuelRecords);
+    }
+
+    public float getLitrePerKm() {
+        return 0.0f;
+    }
+
+    public float getTotalCostAverageEachMonth() {
+        if (monthlyFuelRecord != null) {
+            FuelRecord[] currentMonth;
+            float totalCostEveryMonth = 0.0f;
+            int numberOfMonths = 0;
+
+            monthlyFuelRecord.reset();
+
+            while ((currentMonth = monthlyFuelRecord.popCurrentMonth()) != null) {
+                float totalCost = 0.0f;
+
+                for (FuelRecord record : currentMonth) {
+                    totalCost += record.getTotalCost();
+                }
+
+                totalCostEveryMonth += totalCost;
+                numberOfMonths++;
+            }
+
+            return totalCostEveryMonth / numberOfMonths;
+        }
+
+        return 0.0f;
     }
 
     public void retrieveData(Cursor cursor) {
