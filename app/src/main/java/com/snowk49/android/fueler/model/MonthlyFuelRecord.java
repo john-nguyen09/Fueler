@@ -5,9 +5,9 @@ import java.util.Calendar;
 
 public class MonthlyFuelRecord {
 
-    int counter = 0;
-    final FuelRecord[] fuelRecords;
-    ArrayList<Integer> separator;
+    private int counter = 0;
+    private final FuelRecord[] fuelRecords;
+    private ArrayList<Integer> separator;
 
     public MonthlyFuelRecord(FuelRecord[] fuelRecords) {
         separator = new ArrayList<>();

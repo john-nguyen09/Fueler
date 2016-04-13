@@ -16,10 +16,9 @@ import com.snowk49.android.fueler.presenter.FuelRecordListViewAdapter;
 
 public class FuelRecordListViewFragment extends Fragment {
 
-    Car car;
-    MainActivity context;
-    ListView fuelRecordListView;
-    FuelRecordListViewAdapter fuelRecordListViewAdapter;
+    private Car car;
+    private MainActivity context;
+    private FuelRecordListViewAdapter fuelRecordListViewAdapter;
 
     @Override
     public void onAttach(Context context) {
@@ -39,7 +38,7 @@ public class FuelRecordListViewFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fuel_record_list_view_fragment, container, false);
 
-        fuelRecordListView = (ListView) view.findViewById(R.id.fuel_record_list_view);
+        ListView fuelRecordListView = (ListView) view.findViewById(R.id.fuel_record_list_view);
         fuelRecordListViewAdapter = new FuelRecordListViewAdapter(context);
         fuelRecordListViewAdapter.setCar(car);
         fuelRecordListView.setAdapter(fuelRecordListViewAdapter);

@@ -4,14 +4,12 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import java.util.Collection;
-
 public final class Car {
 
-    int id;
-    String carName;
-    Uri imagePath;
-    MonthlyFuelRecord monthlyFuelRecord;
+    private int id;
+    private String carName;
+    private Uri imagePath;
+    private MonthlyFuelRecord monthlyFuelRecord;
 
     public Car(String carName, Uri imagePath) {
         this.carName = carName;
@@ -59,6 +57,9 @@ public final class Car {
     }
 
     public float getLitrePerKm() {
+        // TODO: Implementing calculation of litre/km here
+        FuelRecord[] fuelRecords = monthlyFuelRecord.getFuelRecords();
+
         return 0.0f;
     }
 

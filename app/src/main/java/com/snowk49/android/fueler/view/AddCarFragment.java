@@ -34,11 +34,11 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
     public static final int MAXIMUM_FILE_NAME = 100;
     public static final int IMAGE_QUALITY = 100;
 
-    MainActivity context;
-    EditText carNameEditText;
-    ImageView carImageView;
-    Button changeCarImageButton;
-    CarListViewAdapter adapter;
+    private MainActivity context;
+    private EditText carNameEditText;
+    private ImageView carImageView;
+    private Button changeCarImageButton;
+    private CarListViewAdapter adapter;
 
     @Override
     public void onAttach(Context context) {

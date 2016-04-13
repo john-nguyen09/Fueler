@@ -32,14 +32,14 @@ import java.util.Date;
 public class AddFuelRecordFragment extends Fragment implements View.OnClickListener,
         DatePickerDialog.OnDateSetListener{
 
-    MainActivity context;
-    Car car;
-    Button dateButton;
-    EditText totalCostEditText;
-    EditText litreEditText;
-    EditText odometerValueEditText;
-    EditText descriptionEditText;
-    CheckBox partialFillupCheckBox;
+    private MainActivity context;
+    private Car car;
+    private Button dateButton;
+    private EditText totalCostEditText;
+    private EditText litreEditText;
+    private EditText odometerValueEditText;
+    private EditText descriptionEditText;
+    private CheckBox partialFillupCheckBox;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

@@ -9,7 +9,7 @@ import com.snowk49.android.fueler.view.FuelRecordListViewFragment;
 
 public class FuelDetailsPagerAdapter extends FragmentStatePagerAdapter {
 
-    Fragment[] fragments;
+    private Fragment[] fragments;
 
     public FuelDetailsPagerAdapter(FragmentManager fm) {
         super(fm);

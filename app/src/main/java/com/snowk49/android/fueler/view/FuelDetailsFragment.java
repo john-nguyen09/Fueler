@@ -14,9 +14,8 @@ import com.snowk49.android.fueler.presenter.FuelDetailsPagerAdapter;
 
 public class FuelDetailsFragment extends Fragment {
 
-    Car car;
-    ViewPager viewPager;
-    FuelDetailsPagerAdapter fuelDetailsPagerAdapter;
+    private Car car;
+    private FuelDetailsPagerAdapter fuelDetailsPagerAdapter;
 
     @Nullable
     @Override
@@ -24,7 +23,7 @@ public class FuelDetailsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fuel_details_fragment, container, false);
 
-        viewPager = (ViewPager) view.findViewById(R.id.fuel_details_pager);
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.fuel_details_pager);
         fuelDetailsPagerAdapter = new FuelDetailsPagerAdapter(getFragmentManager());
         fuelDetailsPagerAdapter.setCar(car);
         viewPager.setAdapter(fuelDetailsPagerAdapter);

@@ -27,16 +27,12 @@ import java.util.ArrayList;
 public class CarListViewFragment extends Fragment implements AdapterView.OnItemClickListener,
         AdapterView.OnItemLongClickListener {
 
-    MainActivity context;
-    ListView carListView;
-    CarListViewAdapter carListViewAdapter;
-    ArrayList<Car> selectedCars;
-    ActionMode actionMode;
+    private MainActivity context;
+    private CarListViewAdapter carListViewAdapter;
+    private ActionMode actionMode;
 
     public CarListViewFragment() {
         super();
-
-        selectedCars = new ArrayList<>();
     }
 
     @Override
@@ -58,7 +54,7 @@ public class CarListViewFragment extends Fragment implements AdapterView.OnItemC
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.car_list_view_fragment, container, false);
 
-        carListView = (ListView) view.findViewById(R.id.car_list_view);
+        ListView carListView = (ListView) view.findViewById(R.id.car_list_view);
         carListViewAdapter = new CarListViewAdapter(context);
         carListView.setAdapter(carListViewAdapter);
 

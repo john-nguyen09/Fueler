@@ -20,14 +20,14 @@ public final class FuelRecord {
         return sqlDateFormat;
     }
 
-    Car car;
-    int id;
-    Date date;
-    float totalCost;
-    float litre;
-    float odometer;
-    boolean partialFillup;
-    String description;
+    private Car car;
+    private int id;
+    private Date date;
+    private float totalCost;
+    private float litre;
+    private float odometer;
+    private boolean partialFillup;
+    private String description;
 
     public FuelRecord() {
 

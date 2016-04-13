@@ -25,8 +25,8 @@ public class CarListViewAdapter extends ArrayAdapter<Car> implements View.OnClic
 
     public static final int MAXIMUM_NUMBER_CARS = 100;
 
-    ArrayList<Car> cars;
-    ArrayList<Integer> selectedCars;
+    private ArrayList<Car> cars;
+    private ArrayList<Integer> selectedCars;
 
     public CarListViewAdapter(Context context) {
         super(context, 0);

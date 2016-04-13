@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 
 public class FuelRecordListViewAdapter extends ArrayAdapter<FuelRecord> {
 
-    Car car;
+    private Car car;
 
     public FuelRecordListViewAdapter(Context context) {
         super(context, 0);
