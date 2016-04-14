@@ -91,9 +91,12 @@ public class AddFuelRecordFragment extends Fragment implements View.OnClickListe
             float totalCost;
             float litre;
             float odometer;
+            SimpleDateFormat sdf = new SimpleDateFormat(
+                    context.getString(R.string.date_display_format),
+                    context.getResources().getConfiguration().locale);
 
             try {
-                date = FuelRecord.getDateFormat().parse(dateButton.getText().toString());
+                date = sdf.parse(dateButton.getText().toString());
             } catch (ParseException ignored) {
             }
 

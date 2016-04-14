@@ -3,22 +3,9 @@ package com.snowk49.android.fueler.model;
 import android.database.Cursor;
 import android.provider.BaseColumns;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 public final class FuelRecord {
-
-    private static SimpleDateFormat sqlDateFormat;
-
-    public static SimpleDateFormat getDateFormat() {
-        if (sqlDateFormat == null) {
-            sqlDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        }
-
-        return sqlDateFormat;
-    }
 
     private Car car;
     private int id;
@@ -51,10 +38,6 @@ public final class FuelRecord {
 
     public Date getDate() {
         return date;
-    }
-
-    public String getDateSql() {
-        return sqlDateFormat.format(date);
     }
 
     public void setDate(Date date) {
@@ -110,16 +93,13 @@ public final class FuelRecord {
             int partialFillupIndex = cursor.getColumnIndex(FuelEntry.COLUMN_NAME_PARTIAL_FILLUP);
             int descriptionIndex = cursor.getColumnIndex(FuelEntry.COLUMN_NAME_DESCRIPTION);
 
-            try {
-                id = cursor.getInt(idIndex);
-                date = getDateFormat().parse(cursor.getString(dateIndex));
-                totalCost = cursor.getFloat(totalCostIndex);
-                odometer = cursor.getFloat(odometerIndex);
-                partialFillup = cursor.getInt(partialFillupIndex) == 1;
-                description = cursor.getString(descriptionIndex);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            id = cursor.getInt(idIndex);
+            date = new Date();
+            date.setTime(cursor.getLong(dateIndex));
+            totalCost = cursor.getFloat(totalCostIndex);
+            odometer = cursor.getFloat(odometerIndex);
+            partialFillup = cursor.getInt(partialFillupIndex) == 1;
+            description = cursor.getString(descriptionIndex);
         }
     }
 

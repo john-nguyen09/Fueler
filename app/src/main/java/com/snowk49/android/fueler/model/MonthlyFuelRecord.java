@@ -48,7 +48,7 @@ public class MonthlyFuelRecord {
         return fuelRecords;
     }
 
-    // This assumes fuelRecords are sorted in descendant order
+    // This assumes fuelRecords are sorted
     void groupRecordByMonth() {
         Calendar currentDate = Calendar.getInstance();
         Calendar newDate = Calendar.getInstance();

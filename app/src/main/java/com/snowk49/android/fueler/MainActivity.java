@@ -7,6 +7,8 @@ import android.view.MenuItem;
 
 import com.snowk49.android.fueler.singleton.DatabaseFactory;
 import com.snowk49.android.fueler.singleton.FragmentChanger;
+import com.snowk49.android.fueler.singleton.SettingPreferences;
+import com.snowk49.android.fueler.view.MainSettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
             FragmentChanger.getInstance().getMainFragment().addCar();
 
             return true;
+        } else if (item.getItemId() == R.id.action_settings) {
+            FragmentChanger.getInstance().changeFragment(new MainSettingsFragment());
         }
 
         return super.onOptionsItemSelected(item);
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         DatabaseFactory.close();
         FragmentChanger.close();
+        SettingPreferences.close();
 
         super.onDestroy();
     }
@@ -46,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         DatabaseFactory.init(this);
         FragmentChanger.init(this, R.id.main_frame);
+        SettingPreferences.init(this);
+
+        SettingPreferences settingPreferences = SettingPreferences.getInstance();
 
         super.onStart();
     }

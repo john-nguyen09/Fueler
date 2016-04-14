@@ -16,7 +16,7 @@ public class FuelRecordTable extends FuelerTable {
         ContentValues values = new ContentValues();
 
         values.put(FuelEntry.COLUMN_NAME_CAR_ID, fuelRecord.getCar().getId());
-        values.put(FuelEntry.COLUMN_NAME_DATE, fuelRecord.getDateSql());
+        values.put(FuelEntry.COLUMN_NAME_DATE, fuelRecord.getDate().getTime());
         values.put(FuelEntry.COLUMN_NAME_TOTAL_COST, fuelRecord.getTotalCost());
         values.put(FuelEntry.COLUMN_NAME_LITRE, fuelRecord.getLitre());
         values.put(FuelEntry.COLUMN_NAME_ODOMETER, fuelRecord.getOdometer());

@@ -57,8 +57,26 @@ public final class Car {
     }
 
     public float getLitrePerKm() {
-        // TODO: Implementing calculation of litre/km here
-        FuelRecord[] fuelRecords = monthlyFuelRecord.getFuelRecords();
+        if (monthlyFuelRecord != null) {
+            FuelRecord[] fuelRecords = monthlyFuelRecord.getFuelRecords();
+            float totalLitre = 0.0f;
+
+            if (fuelRecords.length == 1) {
+                return 0.0f;
+            }
+
+            for (int i = 0; i < fuelRecords.length - 1; i++) {
+                float distance = fuelRecords[i].getOdometer() - fuelRecords[i + 1].getOdometer();
+
+                if (distance == 0.0f) {
+                    return 0.0f;
+                }
+
+                totalLitre += fuelRecords[i].getLitre() / distance;
+            }
+
+            return totalLitre / (float) (fuelRecords.length - 1);
+        }
 
         return 0.0f;
     }

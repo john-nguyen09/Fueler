@@ -15,6 +15,7 @@ import com.snowk49.android.fueler.model.CarTable;
 import com.snowk49.android.fueler.model.FuelerDbHelper;
 import com.snowk49.android.fueler.singleton.DatabaseFactory;
 import com.snowk49.android.fueler.singleton.FragmentChanger;
+import com.snowk49.android.fueler.singleton.SettingPreferences;
 import com.snowk49.android.fueler.view.AddFuelRecordFragment;
 import com.squareup.picasso.Picasso;
 
@@ -92,15 +93,18 @@ public class CarListViewAdapter extends ArrayAdapter<Car> implements View.OnClic
         }
 
         Context context = getContext();
+        SettingPreferences settingPreferences = SettingPreferences.getInstance();
 
         ViewTag viewTag = (ViewTag) convertView.getTag();
         viewTag.carNameTextView.setText(car.getCarName());
         viewTag.carAverageCostPerMonth.setText(context
-                .getString(R.string.car_average_cost_per_month, "$",
+                .getString(R.string.car_average_cost_per_month,
+                        settingPreferences.getCurrency(),
                         car.getTotalCostAverageEachMonth()));
         viewTag.carAverageLitrePerKm.setText(context
                 .getString(R.string.car_average_litre_per_km, car.getLitrePerKm(),
-                        "L", "Km"));
+                        settingPreferences.getVolumeUnit(),
+                        settingPreferences.getDistanceUnit()));
         viewTag.addFuelButton.setTag(position);
 
         if (selectedCars.contains(position)) {

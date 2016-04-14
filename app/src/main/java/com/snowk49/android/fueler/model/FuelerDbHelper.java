@@ -13,7 +13,6 @@ public class FuelerDbHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Fueler.db";
 
     static final String TEXT = " TEXT";
-    static final String DATE = TEXT;
     static final String DECIMAL = " REAL";
     static final String NUMBER = " INTEGER";
     static final String BOOLEAN = NUMBER;
@@ -25,7 +24,7 @@ public class FuelerDbHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + FuelEntry.TABLE_NAME + "(" +
             FuelEntry._ID + NUMBER + PRIMARY + AUTO_INC + SEPARATOR +
             FuelEntry.COLUMN_NAME_CAR_ID + NUMBER + SEPARATOR +
-            FuelEntry.COLUMN_NAME_DATE + DATE + SEPARATOR +
+            FuelEntry.COLUMN_NAME_DATE + NUMBER + SEPARATOR +
             FuelEntry.COLUMN_NAME_TOTAL_COST + DECIMAL + SEPARATOR +
             FuelEntry.COLUMN_NAME_LITRE + DECIMAL + SEPARATOR +
             FuelEntry.COLUMN_NAME_ODOMETER + DECIMAL + SEPARATOR +

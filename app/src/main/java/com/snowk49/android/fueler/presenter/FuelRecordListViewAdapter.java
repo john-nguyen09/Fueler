@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.snowk49.android.fueler.R;
 import com.snowk49.android.fueler.model.Car;
 import com.snowk49.android.fueler.model.FuelRecord;
+import com.snowk49.android.fueler.singleton.SettingPreferences;
 
 import java.text.SimpleDateFormat;
 
@@ -61,12 +62,15 @@ public class FuelRecordListViewAdapter extends ArrayAdapter<FuelRecord> {
         ViewTag viewTag = (ViewTag) convertView.getTag();
         SimpleDateFormat sdf = new SimpleDateFormat(context.getString(R.string.date_display_format),
                 context.getResources().getConfiguration().locale);
+        SettingPreferences settingPreferences = SettingPreferences.getInstance();
 
         viewTag.date.setText(sdf.format(fuelRecord.getDate()));
         viewTag.totalCost.setText(context.getString(R.string.fuel_record_total_cost_value,
-                "$" ,fuelRecord.getTotalCost()));
+                settingPreferences.getCurrency(),
+                fuelRecord.getTotalCost()));
         viewTag.odometer.setText(context.getString(R.string.fuel_record_odometer_value,
-                fuelRecord.getOdometer(), "km"));
+                fuelRecord.getOdometer(),
+                settingPreferences.getDistanceUnit()));
         viewTag.partialFillup.setText(fuelRecord.isPartialFillup() ?
                 context.getString(R.string.yes) : context.getString(R.string.no));
         viewTag.description.setText(context.getString(R.string.fuel_record_description_value,
