@@ -58,6 +58,7 @@ public class CarTable extends FuelerTable{
         String[] ids = new String[cars.length];
 
         for (int i = 0; i < cars.length; i++) {
+            cars[i].selfDestroy();
             ids[i] = String.valueOf(cars[i].getId());
 
             if (i == cars.length - 1) {

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.snowk49.android.fueler.MainActivity;
 import com.snowk49.android.fueler.R;
@@ -22,6 +23,7 @@ import com.snowk49.android.fueler.presenter.CarListViewAdapter;
 import com.snowk49.android.fueler.singleton.DatabaseFactory;
 import com.snowk49.android.fueler.singleton.FragmentChanger;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class CarListViewFragment extends Fragment implements AdapterView.OnItemClickListener,
@@ -128,6 +130,7 @@ public class CarListViewFragment extends Fragment implements AdapterView.OnItemC
                             .getFuelRecordTable();
                     CarTable carTable = DatabaseFactory.getInstance().getCarTable();
                     Car[] deletedCars = new Car[selectedCars.size()];
+                    File internalDir = context.getFilesDir();
 
                     for (int i = 0; i < selectedCars.size(); i++) {
                         deletedCars[i] = carListViewAdapter.getItem(selectedCars.get(i));

@@ -3,6 +3,11 @@ package com.snowk49.android.fueler.model;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.util.Log;
+
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public final class Car {
 
@@ -115,6 +120,13 @@ public final class Car {
             id = cursor.getInt(idIndex);
             carName = cursor.getString(carNameIndex);
             imagePath = Uri.parse(cursor.getString(imagePathIndex));
+        }
+    }
+
+    public void selfDestroy() {
+        File imageFile = new File(imagePath.getPath());
+        if (!imageFile.exists() || !imageFile.delete()) {
+            Log.d(getClass().getName(), "Cannot delete image file");
         }
     }
 

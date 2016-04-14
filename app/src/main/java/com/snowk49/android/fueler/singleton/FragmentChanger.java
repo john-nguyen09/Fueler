@@ -10,7 +10,7 @@ import com.snowk49.android.fueler.view.CarListViewFragment;
 
 public final class FragmentChanger {
 
-    static FragmentChanger sInstance;
+    private static FragmentChanger sInstance;
 
     public static void init(Context context, int id) {
         if (sInstance == null) {
@@ -57,8 +57,15 @@ public final class FragmentChanger {
     public void changeFragment(Fragment fragment) {
         FragmentTransaction ft = fragmentManager.beginTransaction();
 
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.replace(id, fragment);
+        ft.addToBackStack(fragment.getClass().getName());
+        ft.commitAllowingStateLoss();
+    }
+
+    public void addFragment(Fragment fragment) {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+
+        ft.add(id, fragment);
         ft.addToBackStack(fragment.getClass().getName());
         ft.commitAllowingStateLoss();
     }
