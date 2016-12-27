@@ -49,7 +49,7 @@ public class MonthlyFuelRecord {
     }
 
     // This assumes fuelRecords are sorted
-    void groupRecordByMonth() {
+    private void groupRecordByMonth() {
         Calendar currentDate = Calendar.getInstance();
         Calendar newDate = Calendar.getInstance();
 
