@@ -1,10 +1,17 @@
 package com.snowk49.android.fueler;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.snowk49.android.fueler.presenter.BackupController;
 import com.snowk49.android.fueler.singleton.DatabaseFactory;
 import com.snowk49.android.fueler.singleton.FragmentChanger;
 import com.snowk49.android.fueler.singleton.SettingPreferences;
@@ -33,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.action_settings) {
             FragmentChanger.getInstance().changeFragment(new MainSettingsFragment());
+        } else if (item.getItemId() == R.id.action_backup) {
+            BackupController backupController = new BackupController();
+            backupController.index();
         }
 
         return super.onOptionsItemSelected(item);

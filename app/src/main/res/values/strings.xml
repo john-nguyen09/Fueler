@@ -46,4 +46,5 @@
     <string name="default_volume_unit">L</string>
     <string name="action_take_photo">Take a photo</string>
     <string name="action_choose_photo">Choose a Photo</string>
+    <string name="action_backup">Back up all data</string>
 </resources>

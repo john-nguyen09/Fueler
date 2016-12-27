@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.File;
+
 import static com.snowk49.android.fueler.model.FuelRecord.FuelEntry;
 import static com.snowk49.android.fueler.model.Car.CarEntry;
 
@@ -41,8 +43,12 @@ public class FuelerDbHelper extends SQLiteOpenHelper {
             CarEntry.COLUMN_NAME_IMAGE_PATH + TEXT +
             ")";
 
+    protected Context context;
+
     public FuelerDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
+        this.context = context;
     }
 
     @Override
@@ -62,5 +68,9 @@ public class FuelerDbHelper extends SQLiteOpenHelper {
 
     public FuelRecordTable getFuelRecordTable() {
         return new FuelRecordTable(getWritableDatabase());
+    }
+
+    public File getDatabaseFile() {
+        return context.getDatabasePath(DATABASE_NAME);
     }
 }
